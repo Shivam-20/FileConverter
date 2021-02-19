@@ -49,6 +49,7 @@ export default function FIleUploader() {
   };
   return (
     <div>
+      <h1>Encode File</h1>
       <input type="password" name="key" onChange={keychangeHandler} />
       <input type="file" name="file" onChange={changeHandler} />
       {isFilePicked ? (
