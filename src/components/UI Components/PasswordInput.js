@@ -11,16 +11,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PasswordInput({ password, onChangeHandlePwd }) {
+export default function PasswordInput({ password, onChangeHandlePwd, id }) {
   const classes = useStyles();
-
-
-
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div>
         <TextField
-          id="standard-error"
+          id={id}
           label="Passcode"
           type="password"
           value={password}

@@ -13,10 +13,10 @@ const FileUploader = (props) => {
           bgcolor="background.paper"
         >
           <Box p={1}>
-            <label htmlFor="btn-upload">
+            <label htmlFor={props.id}>
               <input
-                id="btn-upload"
-                name="btn-upload"
+                id={props.id}
+                name={props.id}
                 style={{ display: "none" }}
                 type="file"
                 onChange={props.changeHandler}
