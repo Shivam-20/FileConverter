@@ -1,12 +1,14 @@
 import "./App.css";
-import DecodeFile from "./components/DecodeFile";
-import FIleUploader from "./components/FIleUploader";
+// import DecodeFile from "./components/DecodeFile";
+import HomePage from "./components/HomePage";
+// import FileUploaderCard from "./components/UI Components/FileUploaderCard";
 
 function App() {
   return (
     <>
-      <FIleUploader />
-      <DecodeFile />
+      <HomePage />
+      {/* <DecodeFile />
+      <FileUploaderCard/> */}
     </>
   );
 }
