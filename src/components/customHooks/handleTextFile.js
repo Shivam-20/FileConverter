@@ -12,10 +12,11 @@ const getFileType = (fileType) => {
     .split("_")
     [fileType.split("_").length - 1].replace(/\s+/g, "")
     .split(".")[0]
-    .replace(/[^a-z\s]+/gi, "");
+    .replace(/[^a-z1-9\s]+/gi, "");
 };
 
 const getFileName = (oldFileName, extension) => {
+  console.log(extension)
   return oldFileName.split(extension)[0];
 };
 
