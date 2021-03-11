@@ -53,14 +53,13 @@ const DecodeFile = () => {
         mimeType
       );
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
       setError(error.message);
       setOpenSnackBar(true);
     }
   };
 
   const keychangeHandler = (event) => {
-    // console.log("i am called");
     setKey(event.target.value);
   };
 
@@ -103,24 +102,6 @@ const DecodeFile = () => {
           ) : (
             <p>Select a file to show details</p>
           )}
-          {/* {fileTosave && (
-          <div>
-            <Button
-              variant="contained"
-              onClick={handleDownloadFile}
-              color="primary"
-            >
-              Download Original File
-            </Button>
-          </div>
-        )}
-        {isFilePicked && (
-          <div>
-            <Button variant="contained" onClick={resetHandle} color="secondary">
-              Reset
-            </Button>
-          </div>
-        )} */}
         </Paper>
       </div>
       {error ? (

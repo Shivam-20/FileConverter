@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import SaveIcon from "@material-ui/icons/Save";
 import SnackBar from "./UI Components/SnackBar";
+import Spinner from "./UI Components/Spinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,6 +36,7 @@ const EncodeFile = () => {
   const [fileTosave, setFileTosave] = useState();
   const [error, setError] = useState(null);
   const [openSnackbar, setOpenSnackBar] = useState(false);
+  const [spinner, setSpinner] = useState(true);
 
   let [toBase64, base64Data, base64FileName] = getBase64();
   let [toBlob] = saveFile();
@@ -100,7 +102,7 @@ const EncodeFile = () => {
             </p>
             <div style={{ margin: "10px" }}>
               <Button variant="contained" onClick={handleSubmission}>
-                Convert to Base64
+                Process File
               </Button>
             </div>
           </div>
@@ -115,7 +117,7 @@ const EncodeFile = () => {
               color="primary"
               startIcon={<SaveIcon />}
             >
-              Download Base64
+              Download Encode file
             </Button>
           </div>
         )}
@@ -134,6 +136,7 @@ const EncodeFile = () => {
           message={error}
         />
       ) : null}
+      {spinner ? <Spinner /> : null}
     </>
   );
 };
