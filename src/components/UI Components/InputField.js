@@ -11,17 +11,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function InputField({ value, onChangeHandler, id, fType }) {
+export default function PasswordInput({
+  password,
+  onChangeHandlePwd,
+  id,
+  label,
+  inputType,
+}) {
   const classes = useStyles();
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div>
         <TextField
           id={id}
-          label="Passcode"
-          type={fType}
-          value={value}
-          onChange={onChangeHandler}
+          label={label}
+          type={inputType}
+          value={password}
+          onChange={onChangeHandlePwd}
         />
       </div>
     </form>

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import handleTextFile from "./customHooks/handleTextFile";
-import changeString from "./customHooks/changeString";
+import useEncodeString from "./customHooks/encodeString";
 import saveFile from "./customHooks/saveFile";
 import filetype from "../utils/filetype";
 import { Button, makeStyles, Paper } from "@material-ui/core";
-import PasswordInput from "./UI Components/PasswordInput";
+import PasswordInput from "./UI Components/InputField";
 import FileUploaderCard from "./UI Components/FileUploader";
 import Snackbar from "./UI Components/SnackBar";
 
@@ -31,7 +31,7 @@ const DecodeFile = () => {
   const [key, setKey] = useState("");
   // const [fileTosave, setFileTosave] = useState();
   const [readTestFile, getFileType, getFileName] = handleTextFile();
-  const [encodeString, decodeString] = changeString();
+  const [encodeString, decodeString] = useEncodeString();
   const [toBlob, generateFile] = saveFile();
   const [error, setError] = useState(null);
   const [openSnackbar, setOpenSnackBar] = useState(false);
@@ -72,6 +72,8 @@ const DecodeFile = () => {
             password={key}
             onChangeHandlePwd={keychangeHandler}
             id="decodeKey"
+            label="Passwords"
+            inputType="password"
           />
           <FileUploaderCard
             selectedFiles={selectedFile}

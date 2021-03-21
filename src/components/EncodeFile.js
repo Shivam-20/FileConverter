@@ -2,15 +2,14 @@ import React, { useState } from "react";
 import { saveAs } from "file-saver";
 import { getBase64 } from "./customHooks/getBase64";
 import saveFile from "./customHooks/saveFile";
-import changeString from "./customHooks/changeString";
+import useEncodeString from "./customHooks/encodeString";
 import FileUploaderCard from "./UI Components/FileUploader";
-import PasswordInput from "./UI Components/PasswordInput";
+import PasswordInput from "./UI Components/InputField";
 import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import SaveIcon from "@material-ui/icons/Save";
 import SnackBar from "./UI Components/SnackBar";
-import Spinner from "./UI Components/Spinner";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +39,7 @@ const EncodeFile = () => {
 
   let [toBase64, base64Data, base64FileName] = getBase64();
   let [toBlob] = saveFile();
-  let [encodeString, decodeString] = changeString();
+  let [encodeString, decodeString] = useEncodeString();
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
     setIsFilePicked(true);
@@ -78,12 +77,13 @@ const EncodeFile = () => {
   return (
     <>
       <Paper className={classes.paper}>
-        {" "}
         <h1>Encode File</h1>
         <PasswordInput
           password={key}
           onChangeHandlePwd={keychangeHandler}
           id="encodeKey"
+          label="Passwords"
+          inputType="password"
         />
         <FileUploaderCard
           selectedFiles={selectedFile}
@@ -136,7 +136,7 @@ const EncodeFile = () => {
           message={error}
         />
       ) : null}
-      {spinner ? <Spinner /> : null}
+      {/* {spinner ? <Spinner /> : null} */}
     </>
   );
 };

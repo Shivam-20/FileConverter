@@ -30,12 +30,6 @@ export default function HomePage() {
         <Grid item xs={12}>
           {toggle ? <EncodeFile /> : <DecodeFile />}
         </Grid>
-        {/* <Grid item xs={6}>
-          <EncodeFile />
-        </Grid>
-        <Grid item xs={6}>
-          <DecodeFile />
-        </Grid> */}
       </Grid>
     </div>
   );
