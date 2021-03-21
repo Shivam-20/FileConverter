@@ -17,8 +17,10 @@ export default function PasswordInput({
   id,
   label,
   inputType,
+  ...rest
 }) {
   const classes = useStyles();
+  // console.log(rest);
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div>
@@ -28,6 +30,7 @@ export default function PasswordInput({
           type={inputType}
           value={password}
           onChange={onChangeHandlePwd}
+          {...rest}
         />
       </div>
     </form>

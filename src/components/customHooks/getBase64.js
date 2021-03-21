@@ -11,6 +11,10 @@ const base64Data = (string) => {
 const base64FileName = (originalName, originalType) => {
   return originalName.split(".")[0] + "_" + originalType.split("/")[1] + ".txt";
 };
+
+const string2Base64 = (string) => {
+  return Buffer.from(string).toString("base64");
+};
 export const getBase64 = () => {
-  return [toBase64, base64Data, base64FileName];
+  return [toBase64, base64Data, base64FileName, string2Base64];
 };
