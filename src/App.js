@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <HomePage />
-      <DecodeFile />
+      {/* <DecodeFile /> */}
       {/* <FileUploaderCard/> */}
       {/* <EncodePassword /> */}
     </>
