@@ -35,7 +35,7 @@ const EncodeFile = () => {
   const [fileTosave, setFileTosave] = useState();
   const [error, setError] = useState(null);
   const [openSnackbar, setOpenSnackBar] = useState(false);
-  const [spinner, setSpinner] = useState(true);
+  // const [spinner, setSpinner] = useState(true);
 
   let [toBase64, base64Data, base64FileName] = getBase64();
   let [toBlob] = saveFile();

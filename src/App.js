@@ -1,16 +1,14 @@
 import "./App.css";
-import EncodePassword from "./components/EncodePassword";
-import DecodeFile from "./components/DecodeFile";
 import HomePage from "./components/HomePage";
-// import FileUploaderCard from "./components/UI Components/FileUploaderCard";
+import Header from "./components/UI Components/Header";
+import Navbar from "./components/UI Components/Navbar";
 
 function App() {
   return (
     <>
+      <Navbar />
+      {/* <Header /> */}
       <HomePage />
-      {/* <DecodeFile /> */}
-      {/* <FileUploaderCard/> */}
-      {/* <EncodePassword /> */}
     </>
   );
 }
