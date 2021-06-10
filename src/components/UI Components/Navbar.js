@@ -1,145 +1,91 @@
-import React, { useEffect } from "react";
-// import { useSelector, useDispatch } from "react-redux";
-// import { useHistory } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSignInAlt,
-  faUserPlus,
-  faHome,
-  faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
-// import AuthHelper from "../../utils/auth/authhelper";
-// import ToastPopUp from "../ToastMsg/ToastPopUp";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import MenuListComposition from './Menu';
 
-const Nav = () => {
-//   let user = useSelector((state) => state.user.currentUser);
-//   let { message, isError, toastPop } = useSelector(
-    // (state) => state.notification
-//   );
-//   const dispatch = useDispatch();
-//   const history = useHistory();
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+}));
 
-//   const toggleToast = () => {
-//     dispatch({
-//       type: "SET_CURRENT_NOTIFICATION_FALSE",
-//       payload: { toastPop: false },
-//     });
-//   };
-
+export default function DenseAppBar() {
+  const classes = useStyles();
 
   return (
-    <div>
-      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-        {/* <ToastPopUp
-          onClose={toggleToast}
-          show={toastPop}
-          delay={!isError}
-          messageBody={message}
-          isError={isError}
-        /> */}
-        <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item px-3">
-              <NavLink className="navbar-brand mx-auto" to="/">
-                <FontAwesomeIcon icon={faHome} />
-              </NavLink>
-            </li>
-            <li className="nav-item dropdown px-3">
-              <div
-                className="nav-link dropdown-toggle"
-                id="mobileDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Mobile
-              </div>
-              <div
-                className="dropdown-menu dropdown-menu"
-                aria-labelledby="mobileDropdown"
-              >
-                <NavLink className="dropdown-item" to="/addmobile">
-                  Add Mobile
-                </NavLink>
-                {/* <div className="dropdown-divider"></div> */}
-                <NavLink className="dropdown-item" to="/mobiles">
-                  View Mobiles
-                </NavLink>
-              </div>
-            </li>
-            <li className="nav-item dropdown px-3">
-              <div
-                className="nav-link dropdown-toggle"
-                id="mobileDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Request
-              </div>
-              <div
-                className="dropdown-menu dropdown-menu"
-                aria-labelledby="mobileDropdown"
-              >
-                <NavLink className="dropdown-item" to="/rdevice">
-                  Request Device
-                </NavLink>
-                {/* <div className="dropdown-divider"></div> */}
-                <NavLink className="dropdown-item" to="/ralldevice">
-                  View Requests
-                </NavLink>
-              </div>
-            </li>
-            <li className="nav-item dropdown px-3">
-              <div
-                className="nav-link dropdown-toggle"
-                id="mobileDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Issue
-              </div>
-              <div
-                className="dropdown-menu dropdown-menu"
-                aria-labelledby="mobileDropdown"
-              >
-                <NavLink className="dropdown-item" to="/issueddevice">
-                  Issued Devices
-                </NavLink>
-                {/* <div className="dropdown-divider"></div> */}
-                <NavLink className="dropdown-item" to="/retrundevice">
-                  Return Device
-                </NavLink>
-              </div>
-            </li>
-            <li className="nav-item px-3">
-              <NavLink className="nav-link" to="/about">
-                About
-              </NavLink>
-            </li>
-          </ul>
-        </div>
-        <div className="mx-auto order-0">
-          <NavLink className="navbar-brand mx-auto" to="/">
-            IMC
-          </NavLink>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target=".dual-collapse2"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </nav>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar variant="dense">
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" color="inherit">
+            Encryptofier
+          </Typography>
+          <MenuListComposition menuName="File" menuItems={[{subItem:"Encrypt",url:"/enrypto"},{subItem:"Decrypt",url:"/derypto"}]}/>
+          <MenuListComposition menuName="Password" menuItems={[{subItem:"Encrypt",url:"/passencrypto"},{subItem:"Decrypt",url:"/passdecrypto"}]}/>
+        </Toolbar>
+      </AppBar>
     </div>
   );
-};
+}
+// import React from "react";
+// import { Menu as MenuIcon } from "@material-ui/icons";
+// const {
+//   AppBar,
+//   Toolbar,
+//   IconButton,
+//   Typography,
+//   makeStyles,
+//   Paper,
+// } = require("@material-ui/core");
 
-export default Nav;
+
+// const useStyles = makeStyles(theme => ({
+//   offset: theme.mixins.toolbar,
+//   root: {
+//     display: 'flex',
+//     flexWrap: 'wrap',
+//     '& > *': {
+//       margin: theme.spacing(1),
+//       width: theme.spacing(8),
+//       height: theme.spacing(4),
+
+//     },
+//   },
+// }))
+
+// const SnackBar = () => {
+//   const classes = useStyles();
+//   return (
+//     <AppBar position="static">
+//       <Toolbar variant="dense">
+//         <IconButton
+//           edge="start"
+//           className={classes.menuButton}
+//           color="inherit"
+//           aria-label="menu"
+//         >
+//           <MenuIcon />
+//         </IconButton>
+//         <Typography variant="h6" color="inherit">
+//           Encryptofy
+//         </Typography>
+//         <div className={classes.root}>
+//       <Paper elevation={0} >File</Paper>
+//       <Paper />
+//       <Paper elevation={3} />
+//     </div>
+//       </Toolbar>
+//     </AppBar>
+//   );
+// };
+
+// export default SnackBar;
