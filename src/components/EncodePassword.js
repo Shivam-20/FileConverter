@@ -5,6 +5,7 @@ import PasswordInput from "./UI Components/InputField";
 import useEncodeString from "./customHooks/encodeString";
 import { getBase64 } from "./customHooks/getBase64";
 import _ from "lodash";
+import CryptoJS from "crypto-js";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -30,9 +31,9 @@ const EncodePassword = () => {
     setPassword(event.target.value);
   };
   const btnHandler = () => {
-    let base64String = string2Base64(password);
-    let encodedString = encodeString(base64String, key);
-    setEncodedPassword(encodedString);
+    let encodedString = encodeString(password, key);
+    console.log(encodedString.toString())
+    setEncodedPassword(encodedString.toString().slice(10,20));
     // setPassword(event.target.value);
   };
 
@@ -53,7 +54,7 @@ const EncodePassword = () => {
             password={key}
             onChangeHandlePwd={keychangeHandler}
             id="key"
-            label="Key"
+            label="Encryption Key"
             inputType="text"
           />
         </Grid>
@@ -62,7 +63,7 @@ const EncodePassword = () => {
             password={password}
             onChangeHandlePwd={passwordchangeHandler}
             id="password"
-            label="Passwords"
+            label="Plain Passwords"
             inputType="text"
           />
         </Grid>

@@ -1,3 +1,5 @@
+
+// reads file 
 const toBase64 = (file) =>
   new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -5,9 +7,13 @@ const toBase64 = (file) =>
     reader.onload = () => resolve(reader.result);
     reader.onerror = (error) => reject(error);
   });
+
+//file data to base64 string
 const base64Data = (string) => {
   return string.split(",")[1];
 };
+
+//return file name for new file 
 const base64FileName = (originalName, originalType) => {
   return originalName.split(".")[0] + "_" + originalType.split("/")[1] + ".txt";
 };
@@ -15,6 +21,10 @@ const base64FileName = (originalName, originalType) => {
 const string2Base64 = (string) => {
   return Buffer.from(string).toString("base64");
 };
+
+
+
+
 export const getBase64 = () => {
   return [toBase64, base64Data, base64FileName, string2Base64];
 };

@@ -1,4 +1,4 @@
-const readTestFile = (file) =>
+const readTextFile = (file) =>
   new Promise((resolve, reject) => {
     var fr = new FileReader();
     fr.onload = function () {
@@ -21,7 +21,7 @@ const getFileName = (oldFileName, extension) => {
 };
 
 const handleTextFile = () => {
-  return [readTestFile, getFileType, getFileName];
+  return [readTextFile, getFileType, getFileName];
 };
 
 export default handleTextFile;

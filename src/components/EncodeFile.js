@@ -39,13 +39,16 @@ const EncodeFile = () => {
 
   let [toBase64, base64Data, base64FileName] = getBase64();
   let [toBlob] = saveFile();
-  let [encodeString, decodeString] = useEncodeString();
+
+  let [encodeString] = useEncodeString();
+
+  //called when file seleted from upload
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
     setIsFilePicked(true);
     setFileTosave(null);
   };
-
+  //converts file data to base64 then encrypt with given key
   const handleSubmission = async () => {
     try {
       let data = await toBase64(selectedFile);
@@ -60,24 +63,29 @@ const EncodeFile = () => {
       setOpenSnackBar(true);
     }
   };
-
+  //save file to disk
   const handleBase64File = () => {
     saveAs(toBlob(fileTosave.fileData), fileTosave.fileNAme);
   };
 
+  //set ket/password to save file
   const keychangeHandler = (e) => {
     setKey(e.target.value);
   };
 
+  //reset all the fields
   const resetHandle = () => {
+    setSelectedFile(null)
     setIsFilePicked(false);
     setFileTosave(null);
     setKey("");
+    setError(null)
+    setOpenSnackBar(false)
   };
   return (
     <>
       <Paper className={classes.paper}>
-        <h1>Encode File</h1>
+        <h1>Encrypt File</h1>
         <PasswordInput
           password={key}
           onChangeHandlePwd={keychangeHandler}
@@ -102,7 +110,7 @@ const EncodeFile = () => {
             </p>
             <div style={{ margin: "10px" }}>
               <Button variant="contained" onClick={handleSubmission}>
-                Process File
+                Encrypt File
               </Button>
             </div>
           </div>
@@ -117,7 +125,7 @@ const EncodeFile = () => {
               color="primary"
               startIcon={<SaveIcon />}
             >
-              Download Encode file
+              Download Encrypted File
             </Button>
           </div>
         )}
@@ -136,7 +144,6 @@ const EncodeFile = () => {
           message={error}
         />
       ) : null}
-      {/* {spinner ? <Spinner /> : null} */}
     </>
   );
 };

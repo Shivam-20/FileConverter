@@ -29,26 +29,27 @@ const DecodeFile = () => {
   const [selectedFile, setSelectedFile] = useState();
   const [isFilePicked, setIsFilePicked] = useState(false);
   const [key, setKey] = useState("");
-  // const [fileTosave, setFileTosave] = useState();
-  const [readTestFile, getFileType, getFileName] = handleTextFile();
+  const [readTextFile, getFileType, getFileName] = handleTextFile();
   const [encodeString, decodeString] = useEncodeString();
   const [toBlob, generateFile] = saveFile();
   const [error, setError] = useState(null);
   const [openSnackbar, setOpenSnackBar] = useState(false);
 
+  //called on file upload
   const changeHandler = (event) => {
     console.log(event.target.files[0]);
     setSelectedFile(event.target.files[0]);
     setIsFilePicked(true);
   };
 
+  //called on decrypt button
   const handleSubmission = async () => {
     try {
-      let file = await readTestFile(selectedFile);
+      let file = await readTextFile(selectedFile);
       let mimeType = filetype(getFileType(selectedFile.name));
-      let decodebase64 = await decodeString(file, key);
+      let decodedbase64 = await decodeString(file, key);
       generateFile(
-        decodebase64,
+        decodedbase64,
         getFileName(selectedFile.name, getFileType(selectedFile.name)),
         mimeType
       );
@@ -59,6 +60,7 @@ const DecodeFile = () => {
     }
   };
 
+  //set file password
   const keychangeHandler = (event) => {
     setKey(event.target.value);
   };
@@ -67,7 +69,7 @@ const DecodeFile = () => {
     <>
       <div>
         <Paper className={classes.paper}>
-          <h1>Decode File</h1>
+          <h1>Decrypt File</h1>
           <PasswordInput
             password={key}
             onChangeHandlePwd={keychangeHandler}
@@ -97,7 +99,7 @@ const DecodeFile = () => {
                   styles={{ margin: "10px" }}
                   color="primary"
                 >
-                  Decode File
+                  Decrypt File
                 </Button>
               </div>
             </div>
